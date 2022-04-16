@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkout page</title>
+    <style>
+     *{
+         margin:0;
+         padding:0;
+         box-sizing: border-box;
+     }
+     h1{
+         text-align: center;
+         background-color: teal;
+         padding:5%;
+     }
+     #container{
+         margin-left:20%;
+         margin-right:20%;
+     }
+
+     form{
+         background-color:teal;
+         margin-top:2%;
+         margin-left:5%;
+         margin-right:5%;
+         padding:20px;
+         display: flex;
+         flex-direction: column;
+     }
+     input{
+         padding:3%;
+         margin-top: 5px;
+         margin-bottom: 5px;
+         width:60%;
+     }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+    <h1>CHECKOUT PAGE</h1>
+
+    <form>
+        <input type="text" required placeholder="Enter Full Name"/>
+        <input type="text" required placeholder="Enter your village" id="">
+        <input type="text" required placeholder="Enter your post office"/>
+        <input type="text" required placeholder="Enter your nearest Landmark"/>
+        <input type="number"  required placeholder="PINCODE"/>
+        <input type="number" required placeholder="Enter your MOBILE NUMBER"/>
+        <input type="text" required placeholder="STATE"/>
+        <input type="submit" value="SUBMIT"/>
+    </form>
+</div>
+    
+</body>
+<script>
+document.querySelector('form').addEventListener('submit', addressSubmitted);
+
+
+function addressSubmitted(){
+    event.preventDefault();
+    window.location.href="./payment.html";
+}
+</script>
+</html>

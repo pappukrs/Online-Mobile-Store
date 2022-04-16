@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment page</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        h1{
+            text-align: center;
+            background-color: teal;
+            padding:5%;
+        }
+        #container{
+            margin-left:20%;
+            margin-right:20%;
+        }
+   
+        form{
+            background-color:teal;
+            margin-top:2%;
+            margin-left:5%;
+            margin-right:5%;
+            padding:20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .flex1{
+            display:flex;
+            justify-content:space-between;
+            padding:5px;
+        }
+        input{
+            padding:3%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width:60%;
+        }
+       </style>
+</head>
+<body>
+    <div id="container">
+        <h1>CHECKOUT PAGE</h1>
+    
+        <form>
+            <input type="text" required placeholder="Enter Full Name" id="usrName"/>
+            
+            <input type="number" required placeholder="16 Digit CARD NUMBER" id="cardNummber">
+             <div class="flex1">
+            <input type="number" required placeholder="CVV Number" id="CVV"/>
+            <input type="month" placeholder="Expiry Date"/>
+        </div>
+        
+            <input type="submit" value="PLACE ORDER"/>
+        </form>
+    </div>
+    
+</body>
+<script>
+    document.querySelector('form').addEventListener('submit', addressSubmitted);
+    
+    
+    function addressSubmitted(){
+        event.preventDefault();
+        var cardNummber=document.querySelector('#cardNummber').value;
+        var CVV=document.querySelector('#CVV').value;
+        if(cardNummber.length===16 && CVV.length===3){
+            alert("Congratulations!!. ORDERED PLACED ");
+        }
+        else{
+            alert("Enter valid credential");
+        }
+        
+    }
+    </script>
+</html>

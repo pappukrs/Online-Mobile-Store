@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRODUCT CATALOG</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .navbar{
+            display:flex;
+            margin-top:2px;
+            margin-left:5%;
+            margin-right:5%;
+            background-color:teal;
+            justify-content: space-around;
+
+        }
+        .navbar>div{
+            padding:5px;
+            width:100%;
+            height:auto;
+        
+        }
+        .navbar>div>a{
+            text-decoration:none;
+            color:white;
+            font-weight:bold;
+            font: size 30px;
+        }
+        .navbar>div>a:hover{
+            color:black;
+            background-color:white;
+            padding:10px;
+        }
+        .content-container{
+            margin-top:25px;
+            margin-left:5%;
+            margin-right:5%;
+            width:100%;
+            height:auto;
+            background-color:pink;
+            overflow:hidden;
+        }
+        h1{
+            text-align: center;
+            background-color: brown;
+            color:white;
+            margin-left:40%;
+            margin-right:40%;
+            margin-top:10px;margin-bottom:5px;
+            padding:5px;
+        }
+        .sorting{
+            display:flex;
+            justify-content:space-around;
+            background-color:white;
+            margin:15px;
+            border:2px solid red;
+
+        }
+
+
+        #productContainer{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:5px;
+        }
+
+        .addToCartBTN{
+            width:auto;
+            height:auto;
+            background-color: red;
+            color:white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div><a href="/">HOME</a></div>
+        <div><a href="/">PRODUCT CATALOG</a></div>
+        <div><a href="./cart.html">CART</a></div>
+        <div><a href="./payment.html">PAYMENT PAGE</a></div>
+    </div>
+    <div class="content-container">
+        <h1>PRODUCT CATALOG</h1>
+        <div class="sorting">
+            <div >SORT BY PRICE
+              <select id="sortByPrice">
+                  <option value="LTH">LOW TO HIGH</option>
+                  <option value="HTL">HIGH TO LOW</option>
+              </select>
+            </div>
+            <div>SORT BY RATING
+                <select id="sortByRating">
+                    <option value="LTH">LOW TO HIGH</option>
+                    <option value="HTL">HIGH TO LOW</option>
+                </select>
+            </div>
+        </div>
+        <div id="productContainer"></div>
+    </div>
+</body>
+<script>
+
+
+
+var data = [
+    {
+      name: "SAMSUNG Galaxy F12",
+      rating: 4,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kn22m4w0/mobile/a/q/8/galaxy-f12-sm-f127gzgiins-samsung-original-imagftmjw3xqg4yk.jpeg?q=70",
+      price: 11499,
+    },
+    {
+      name: "SAMSUNG Galaxy F42",
+      rating: 4.2,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/ku4ezrk0/mobile/v/5/e/galaxy-f42-5g-sm-e426bzahins-samsung-original-imag7anfwxsgumgz.jpeg?q=70",
+      price: 12199,
+    },
+    {
+      name: "Apple Iphone 12",
+      rating: 4.6,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/r/h/z/apple-iphone-12-dummyapplefsn-original-imafwg8dqgncgbcb.jpeg?q=70",
+      price: 59999,
+    },
+    {
+      name: "APPLE iPhone 12 Mini",
+      rating: 4.5,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/d/g/b/apple-iphone-12-mini-dummyapplefsn-original-imafwgbfhfevaajh.jpeg?q=70",
+      price: 49999,
+    },
+    {
+      name: "OPPO A12",
+      rating: 3.8,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kb1470w0/mobile/q/g/g/oppo-a12-cph2083-original-imafsh2hfkyamqyt.jpeg?q=70",
+      price: 9490,
+    },
+    {
+      name: "ASUS ROG Phone 3",
+      rating: 4.9,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kcuug7k0/mobile/g/h/e/asus-rog-phone-3-zs661ks-6a006in-original-imaftwc6nmyuyekd.jpeg?q=70",
+      price: 46999,
+    },
+    {
+      name: "DIZO Star 300",
+      rating: 3.4,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/kqpj4i80/mobile/e/i/r/star-300-dh2001-dizo-original-imag4nmpv7zahzs2.jpeg?q=70",
+      price: 1299,
+    },
+    {
+      name: "Micromax IN Note 1 ",
+      rating: 4.4,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/ku5ufm80/mobile/v/t/1/in-note-1-e7746-micromax-original-imag7cdgz6tqychm.jpeg?q=70",
+      price: 10999,
+    },
+    {
+      name: "SAMSUNG Galaxy Z Fold3 5G",
+      rating: 4,
+      image_url:
+        "https://rukminim1.flixcart.com/image/312/312/ksqeky80/mobile/x/7/1/galaxy-z-fold3-5g-sm-f926bzgdinu-samsung-original-imag68q6hpdwmngw.jpeg?q=70",
+      price: 149999,
+    },
+  ];
+  
+
+//   local storage settings
+ localStorage.setItem("productData",JSON.stringify(data));
+
+ var productData = JSON.parse(localStorage.getItem("productData"));
+ console.log( typeof productData);
+
+ productData.forEach((product)=>{
+
+    var productCard=document.createElement("div");
+
+    var img=document.createElement("img");
+    img.src=product.image_url;
+
+    var name=document.createElement('p');
+    name.innerText=product.name;
+
+    var price=document.createElement("p");
+    price.innerText="Price:"+" RS "+product.price;
+
+    var rating=document.createElement("p");
+    rating.innerText="Rating:"+product.rating+" star";
+
+    var addToCart=document.createElement('button');
+    // console.log(addToCart);
+    addToCart.value="Add to Cart";
+    addToCart.innerText="Add to Cart";
+    addToCart.setAttribute("class","addToCartBTN");
+
+
+
+    productCard.append(img,name,price,rating,addToCart);
+
+
+    document.querySelector('#productContainer').append(productCard);
+    
+
+ });
+//addToCart
+var productCart;
+if(localStorage.getItem("productCart")===null){
+    productCart=[];
+}
+else{
+    productCart=JSON.parse(localStorage.getItem("productCart"));
+}
+ document.querySelector(".addToCartBTN").addEventListener("click",function(product){
+    
+    productCart.push(product);
+    console.log(productCart);
+    localStorage.setItem("productCart",productCart);
+
+ })
+
+ //sort by price;
+ document.querySelector('#sortByPrice').addEventListener('onchange',sortByPrice);
+ document.querySelector('#sortByPrice').addEventListener('onchange',sortByRating);
+
+
+
+ function sortByPrice(){
+
+ }
+</script>
+</html>
